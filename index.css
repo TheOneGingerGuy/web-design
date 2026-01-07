@@ -114,6 +114,7 @@ summary::-webkit-details-marker{
     gap: 1.5rem;
     align-items: center;
     margin-top: 17px;
+    margin-bottom: 1rem;
 }
 .link{
     color: black;
@@ -139,10 +140,12 @@ summary::-webkit-details-marker{
         }
         .menu .li{
             margin-right: 1rem;
+            
         }
         details[open] .menu{
             display: flex;
             right: 2rem;
+            
         }
         details[open] .hamburger{
             background: transparent;
