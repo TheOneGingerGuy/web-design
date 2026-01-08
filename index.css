@@ -126,7 +126,8 @@ summary::-webkit-details-marker{
 }
 @media (max-width:700px){
         summary{
-            display:block;
+            display:block; 
+            margin-bottom: 1rem; 
         }
         .menu{
             flex-direction: column;
@@ -137,25 +138,29 @@ summary::-webkit-details-marker{
             width: 100px;
             display: none;
             padding: 0.5rem 0;
+           
         }
         .menu .li{
             margin-right: 1rem;
-            
+           
         }
         details[open] .menu{
             display: flex;
             right: 2rem;
-            
+           
         }
         details[open] .hamburger{
-            background: transparent;
+            background: transparent; 
+              
         }
         details[open] .hamburger::before{
             transform: rotate(45deg);
             top:0;
+            
         }
         details[open] .hamburger::after{
             transform: rotate(-45deg);
             top:0;
+            
         }
     }
