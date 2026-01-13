@@ -2,8 +2,8 @@
 body{
     background-color: #ebf9ff;
 }
- ::before,*::after{ 
-    box-sizing:border-box; 
+*, *::before, *::after {
+    box-sizing: border-box;
 }
 header{
     display: flex;
@@ -79,7 +79,7 @@ summary{
     width: 26px;
     border-radius:2px;
     position: relative;
-    transition: all 0.3 ease;
+    transition: all 0.3s ease;
     align-items: center;
     }
 .hamburger, .hamburger::before, .hamburger::after{
@@ -89,7 +89,7 @@ summary{
     width: 26px;
     border-radius:2px;
     position: relative;
-    transition: all 0.3 ease;
+    transition: all 0.3s ease;
     align-items: center;
     }
 .hamburger::before, .hamburger::after{
@@ -123,7 +123,7 @@ summary::-webkit-details-marker{
 }
 .link:hover{
     color: navy;
-    text-decoration: underline;
+    font-size: large;
 }
 @media (max-width:700px){
         summary{
@@ -162,7 +162,6 @@ summary::-webkit-details-marker{
         details[open] .hamburger::after{
             transform: rotate(-45deg);
             top:0;
-            
         }
     }
     /* header end */
@@ -254,7 +253,7 @@ summary::-webkit-details-marker{
 }
 
 .footerLink:hover{
-    text-decoration: underline;
+    font-size: large;
 }
 @media (min-width: 768px){
     main{
