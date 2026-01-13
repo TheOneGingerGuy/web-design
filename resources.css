@@ -1,63 +1,66 @@
 /* Base */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-body {
+body{
   margin: 0;
   background-color: #ebf9ff;
   font-family: sans-serif;
   color: #0b1b2a;
 }
-
-/* Header / Nav */
-header {
-  background: white;
-  border-radius: 5px;
-  margin: 12px;
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
 }
 
-nav {
+/* Header */
+header{
+  display: flex;
+  flex-direction: row-reverse;
+  background-color: white;
+  color: black;
+  justify-content: space-between;
+  border-radius: 5px;
+  margin: 12px;
+  padding-bottom: 10px;
+}
+
+header .content{
+  text-align: end;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px 0 14px;
+}
+
+.img{
+  border-radius: 100px;
+}
+
+/* Nav */
+nav{
   position: sticky;
   top: 10px;
   z-index: 10;
+  font-family: sans-serif;
 }
 
-.wrap {
+.wrap{
   max-width: 1100px;
   margin: 0 auto;
   padding: .75rem 1rem;
-  display: flex;
-  align-items: center;
+  display:flex;
+  align-items:center;
   justify-content: space-between;
   gap: 1rem;
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: .75rem;
-  color: black;
-  text-decoration: none;
-  font-weight: 700;
-}
-
-.brand_logo img {
+.logoImg{
   width: 44px;
   height: 44px;
   border-radius: 999px;
 }
 
-.brand_text .sub {
-  font-size: 12px;
-  letter-spacing: 1px;
-  opacity: .8;
-}
-
-/* Menus */
-.menu {
+/* menu links */
+.menu{
   list-style: none;
   margin: 0;
   padding: 0;
@@ -66,55 +69,62 @@ nav {
   align-items: center;
 }
 
-.link {
+.link{
   color: black;
   text-decoration: none;
   font-weight: 400;
 }
 
-.link:hover {
+.link:hover{
   color: navy;
   text-decoration: underline;
 }
 
-.link.active {
+.link.active{
   font-weight: 700;
 }
 
 /* Hamburger */
-.navDetails { position: relative; }
-summary {
+.navDetails{
+  position: relative;
+}
+
+summary{
   list-style: none;
   cursor: pointer;
   display: none;
 }
-summary::-webkit-details-marker { display: none; }
+
+summary::-webkit-details-marker{
+  display:none;
+}
 
 .hamburger,
 .hamburger::before,
-.hamburger::after {
-  display: block;
+.hamburger::after{
+  display:block;
   background-color: black;
   height: 3px;
   width: 26px;
-  border-radius: 2px;
+  border-radius:2px;
   position: relative;
 }
 
 .hamburger::before,
-.hamburger::after {
-  content: "";
+.hamburger::after{
+  content:'';
   position: absolute;
-  left: 0;
+  left:0;
 }
-.hamburger::before { top: 8px; }
-.hamburger::after { top: -8px; }
 
-.menu.mobile {
-  display: none;
+.hamburger::before{ top: 8px; }
+.hamburger::after{ top: -8px; }
+
+.menu.mobile{
+  display:none;
   flex-direction: column;
-  position: absolute;
-  right: 0;
+  position:absolute;
+  right:0;
   top: 45px;
   background: white;
   border: 1px solid rgba(0,0,0,.08);
@@ -123,49 +133,58 @@ summary::-webkit-details-marker { display: none; }
   min-width: 160px;
 }
 
-details[open] .menu.mobile { display: flex; }
+details[open] .menu.mobile{
+  display:flex;
+}
 
-details[open] .hamburger { background: transparent; }
-details[open] .hamburger::before { transform: rotate(45deg); top: 0; }
-details[open] .hamburger::after  { transform: rotate(-45deg); top: 0; }
+details[open] .hamburger{
+  background: transparent;
+}
+details[open] .hamburger::before{
+  transform: rotate(45deg);
+  top:0;
+}
+details[open] .hamburger::after{
+  transform: rotate(-45deg);
+  top:0;
+}
 
 /* Page */
-.page {
+.page{
   max-width: 1100px;
   margin: 0 auto;
   padding: 32px 16px 16px;
 }
 
-.hero {
-  padding: 42px 18px 24px;
+.hero{
+  padding: 40px 18px 24px;
   border-radius: 18px;
   background: linear-gradient(180deg, rgba(235,249,255,0.65), rgba(235,249,255,0));
 }
 
-.hero h1 {
-  font-size: clamp(46px, 5vw, 76px);
-  margin: 0 0 10px 0;
+.hero h1{
+  font-size: clamp(44px, 5vw, 72px);
+  margin: 0 0 12px 0;
   font-weight: 800;
   letter-spacing: -1px;
-  color: #0a2233;
 }
 
-.hero p {
+.hero p{
   margin: 0;
   font-size: 20px;
   opacity: .85;
+  max-width: 700px;
 }
 
-/* Cards row */
-.cards {
-  margin-top: 28px;
+/* Cards like screenshot */
+.cards{
+  margin-top: 26px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
 
-/* Card styling like screenshot */
-.card {
+.resourceCard{
   background: white;
   border: 1px solid rgba(0,0,0,.06);
   border-radius: 12px;
@@ -177,41 +196,40 @@ details[open] .hamburger::after  { transform: rotate(-45deg); top: 0; }
   transition: transform .15s ease, box-shadow .15s ease;
 }
 
-.card:hover {
+.resourceCard:hover{
   transform: translateY(-2px);
   box-shadow: 0 14px 34px rgba(0,0,0,.08);
 }
 
-.iconWrap {
+/* Big icon area */
+.iconBox{
   width: 92px;
   height: 92px;
   margin: 0 auto 18px;
   display: grid;
   place-items: center;
-  color: #2e6e9e; /* icon color */
+  font-size: 52px;
+  border-radius: 16px;
+  background: rgba(235,249,255,.7);
 }
 
-.icon {
-  width: 84px;
-  height: 84px;
-}
-
-.card h2 {
+/* Text */
+.resourceCard h2{
   margin: 6px 0 10px;
   font-size: 34px;
   font-weight: 800;
   color: #0a2233;
 }
 
-.card p {
+.resourceCard p{
   margin: 0;
   font-size: 22px;
   line-height: 1.25;
   opacity: .85;
 }
 
-/* Footer (same vibe as your site) */
-footer {
+/* Footer */
+footer{
   display: flex;
   background-color: rgb(0,0,53);
   height: 5rem;
@@ -224,39 +242,51 @@ footer {
   padding: 0 12px;
 }
 
-#article {
+#logo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+#article{
   width: 14rem;
-  text-align: center;
+  text-align:center;
 }
 
-#connect {
-  display: flex;
-  align-items: center;
+#connect{
+  display:flex;
+  align-items:center;
   gap: 1rem;
+  margin-right: 15px;
 }
 
-.footerLink {
-  color: white;
-  text-decoration: none;
+.footerLink{
+  color:white;
+  text-decoration:none;
 }
 
-.footerLink:hover {
+.footerLink:hover{
   text-decoration: underline;
 }
 
 /* Responsive */
-@media (max-width: 900px) {
-  .cards {
+@media (max-width: 900px){
+  .cards{
     grid-template-columns: 1fr;
   }
-  .card h2 { font-size: 30px; }
-  .card p { font-size: 20px; }
+  .resourceCard h2{
+    font-size: 30px;
+  }
+  .resourceCard p{
+    font-size: 20px;
+  }
 }
 
-@media (max-width: 700px) {
-  summary { display: block; }
-  .menu.desktop { display: none; }
+@media (max-width:700px){
+  summary{ display:block; }
+  .menu.desktop{ display:none; }
 }
-@media (min-width: 701px) {
-  .menu.mobile { display: none !important; }
+
+@media (min-width:701px){
+  .menu.mobile{ display:none !important; }
 }
