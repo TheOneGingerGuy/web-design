@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CodeQuest - Dashboard</title>
+
+  <link rel="stylesheet" href="./dashboard.css" />
+</head>
+<body>
+
+  <!-- Header / Nav -->
+  <header class="header">
+    <nav class="nav wrap" aria-label="Primary">
+      <a class="brand" href="index.html">
+        <span class="brand-icon"><img src="./android-chrome-192x192.png" alt="Clockwork Logo" class="img" width="50" height="50"></span>
+        <div class="brand-text">
+          <div class="brand-name">Clockwork</div>
+        </div>
+      </a>
+
+      <!-- Mobile menu (optional) -->
+      <details class="mobile-menu">
+        <summary aria-label="Toggle Menu">
+          <span class="hamburger" aria-hidden="true"></span>
+        </summary>
+        <ul class="menu menu-mobile">
+          <li><a class="link" href="index.html">Home</a></li>
+          <li><a class="link" href="testimonys.html">Schedule</a></li>
+          <li><a class="link active" href="dashboard.html">Dashboard</a></li>
+          <li><a class="link" href="services.html">Resources</a></li>
+        </ul>
+      </details>
+
+      <!-- Desktop menu -->
+      <ul class="menu menu-desktop">
+        <li><a class="link" href="index.html">Home</a></li>
+        <li><a class="link" href="testimonys.html">Schedule</a></li>
+        <li><a class="link active" href="dashboard.html">Dashboard</a></li>
+        <li><a class="link" href="services.html">Resources</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main -->
+  <main class="wrap main">
+    <section class="hero">
+      <h1>Dashboard</h1>
+      <p class="subtitle">Track your progress and access various resources</p>
+    </section>
+
+    <section class="grid">
+      <!-- Courses Card -->
+      <article class="card">
+        <h2>Courses</h2>
+        <div class="divider"></div>
+        <ul class="list">
+          <li><span class="dot"></span> JavaScript Basics</li>
+          <li><span class="dot"></span> Python for Beginners</li>
+          <li><span class="dot"></span> HTML and CSS</li>
+        </ul>
+      </article>
+
+      <!-- Upcoming Card -->
+      <article class="card">
+        <h2>Upcoming</h2>
+        <div class="divider"></div>
+
+        <div class="event">
+          <div class="calendar" aria-hidden="true">
+            <!-- simple calendar icon -->
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm12 8H5v10h14V10Z"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="event-title">Tutoring</div>
+            <div class="event-date">Monday, April 15</div>
+          </div>
+        </div>
+
+        <div class="event">
+          <div class="calendar" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24">
+              <path d="M7 2v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7Zm12 8H5v10h14V10Z"></path>
+            </svg>
+          </div>
+          <div>
+            <div class="event-title">Group Study</div>
+            <div class="event-date">Wednesday, April 17</div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+</body>
+</html>
