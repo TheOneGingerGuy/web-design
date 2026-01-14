@@ -299,7 +299,6 @@ summary::-webkit-details-marker{
         display: flex;
         margin-left: 10px;
         font-weight: normal;
-        border: solid #ebf9ff;
     }
     #button1{
         font-weight: bold;
