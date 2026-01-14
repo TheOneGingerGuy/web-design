@@ -192,16 +192,16 @@ summary::-webkit-details-marker{
 }
 
 .hero h1{
-  font-size: clamp(44px, 2vw, 64px);
+  font-size: 50px;
   margin: 0 0 12px 0;
-  font-weight: 800;
+  font-weight: 700;
   letter-spacing: -1px;
+  color: rgb(0,0,53);
 }
 
 .hero p{
   margin: 0;
   font-size: 18px;
-  opacity: .85;
   max-width: 650px;
 }
 
