@@ -192,6 +192,7 @@ summary::-webkit-details-marker{
   margin: 0 0 12px 0;
   font-weight: 700;
   letter-spacing: -1px;
+  color: rgb(0,0,53);
 }
 
 .hero p{
