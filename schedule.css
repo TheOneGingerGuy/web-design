@@ -192,7 +192,7 @@ summary::-webkit-details-marker{
 }
 
 .hero h1{
-  font-size: clamp(44px, 5vw, 72px);
+  font-size: clamp(44px, 2vw, 64px);
   margin: 0 0 12px 0;
   font-weight: 800;
   letter-spacing: -1px;
@@ -268,45 +268,41 @@ summary::-webkit-details-marker{
 
 /* Footer */
 footer{
-  display: flex;
-  background-color: rgb(0,0,53);
-  height: 5rem;
-  color: white;
-  margin: 12px;
-  border-radius: 5px;
-  justify-content: space-between;
-  align-items: center;
-  font-size: small;
-  padding: 0 12px;
-}
-
-#logo{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-#article{
-  width: 14rem;
-  text-align:center;
-}
-
-#connect{
-  display:flex;
-  align-items:center;
-  gap: 1rem;
-  margin-right: 15px;
+        display: flex;
+        background-color: rgb(0,0,53);
+        height: 5rem;
+        color: white;
+        margin-top: 10px;
+        border-radius: 5px;
+        justify-content: space-between;
+        font-family: sans-serif;
+        font-size: small;
+    }
+    #logo{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 10px;
+    }
+    #article{
+        width: 10rem;
+        text-align: center;
+    }
+    #connect{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-right: 15px;
 }
 
 .footerLink{
-  color:white;
-  text-decoration:none;
+    color: white;
+    text-decoration: none;
 }
 
 .footerLink:hover{
-  text-decoration: underline;
+    font-size: large;
 }
-
 /* Responsive */
 @media (max-width:700px){
   summary{ display:block; }
