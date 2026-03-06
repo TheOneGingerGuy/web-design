@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Clockwork – Dashboard</title>
-    <link rel="stylesheet" href="./dashboard.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <title>Clockwork - Home</title>
+    <link rel="stylesheet" href="./index.css">
+    <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
-
-<!-- SAME HEADER -->
-<header>
+    <script src="./script.js"></script>
+  <!-- Header Starts -->
+    <header>
          <nav>
             <div class="wrap" aria-label="Primary">
                 <span class="brand_logo"aria-hidden="true">
@@ -30,7 +30,8 @@
                 </ul>
             </details>
              <ul class="menu">
-                    <li><a href="./index.html" class="link">Home</a></li>
+                <li>
+                    <a href="./index.html" class="link">Home</a></li>
                     <li><a href="./schedule.html" class="link">Schedule</a></li>
                     <li><a href="./resources.html" class="link">Resources</a></li>
                     <li><a href="dashboard.html" class="link">Dashboard</a></li>
@@ -43,33 +44,40 @@
             <img src="./images/android-chrome-192x192.png" alt="" class="img" width="50" height="50">
         </div>
     </header>  
-<!-- DASHBOARD CONTENT -->
-<main class="dashboard">
-    <section class="dashboardHeader">
-        <h1>Dashboard</h1>
-        <p>Track your progress and access various resources</p>
-    </section>
-
-    <section class="dashboardCards">
-        <div class="card">
-            <h2>Courses</h2>
-            <ul>
-                <li>JavaScript Basics</li>
-                <li>Python for Beginners</li>
-                <li>HTML and CSS</li>
-            </ul>
-        </div>
-
-        <div class="card">
-            <h2>Upcoming</h2>
-            <p><strong>Tutoring</strong><br>Monday, April 15</p>
-            <p><strong>Group Study</strong><br>Wednesday, April 17</p>
-        </div>
-    </section>
-</main>
-
-<!-- SAME FOOTER -->
-<footer>
+    <main>
+        <section id="left">
+            <div id="heading">
+                <h1>Clockwork: To Help You Manage your Skill Devolpement</h1>
+            </div>
+            <div id = "text">
+                <p>Clockwork is a student built website that helps other students or those curious to learn new skills, all while being easily accessible and user-friendly.</p>
+            </div>
+            <button id="Begin" onclick="location.href='./schedule.html'">Get Started</button>
+        </section>
+        <section id="right">
+            <article><img src="./images/a1.png" alt=""></article>
+        </section>
+    </main>
+    <div id="buttonBox">
+        <button id ="button1" onclick="location.href='./schedule.html'">
+            <img src="./calendar-image-png-3.png" alt="Calendar image" class="buttonImg">
+            Tutoring & Study
+            <p class="buttonDescription">Find live tutoring sessions and group study oppurtunites</p>
+        </button>
+        <button id ="button2" onclick="location.href='./dashboard.html'"> 
+            <img src="./calendar-image-png-3.png" alt="Calendar image" class="buttonImg">
+            Progress Tracker
+            <p class="buttonDescription">Track your learning progress and completed activites</p>
+            
+        </button>
+        <button id ="button3" onclick="location.href='./resources.html'">
+            <img src="./calendar-image-png-3.png" alt="Calendar image" class="buttonImg">
+            Resources 
+            <p class="buttonDescription">Access interative lessons, videos, quizzes and downloads</p>
+            
+        </button>
+    </div>
+    <footer>
         <div id="logo">
             <img src="./images/android-chrome-192x192.png" alt="Clockwork logo" width="50">
         </div>
@@ -83,6 +91,5 @@
             <a href="./about.html" class="footerLink">Help</a>
         </div>
     </footer>
-
 </body>
 </html>
