@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <title>Portal Login</title>
+  <link rel="stylesheet" href="./login.css">
+  <script src="./login.js"></script>
 </head>
 <body>
   <h1>EduPortal Login</h1>
@@ -11,12 +13,12 @@
     <input type="radio" name="role" value="admin" onclick="switchRole('admin')" checked> Administrator
     <input type="radio" name="role" value="student" onclick="switchRole('student')"> Student
   </p>
-  <hr>
+  <div id="loginForm">
   <p>
     <button onclick="switchTab('login')">Sign In</button>
     <button onclick="switchTab('register')">Register</button>
   </p>
-  <div id="loginForm">
+  
     <h2 id="loginTitle">Administrator Sign In</h2>
 
     <p>
@@ -76,7 +78,6 @@
     <button onclick="register()">Create Account</button>
     <p id="registerMsg"></p>
   </div>
-  <hr>
   <div id="dashboard" style="display:none">
     <h2>Welcome, <span id="dashName"></span>!</h2>
     <p>Role: <b id="dashRole"></b></p>

@@ -1,4 +1,4 @@
-/* Base */
+Base
 body{
   margin: 0;
   background-color: #ebf9ff;
@@ -174,3 +174,27 @@ summary::-webkit-details-marker{
             top:0;
         }
     }
+#loginForm{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #0b1b2a;
+    padding: 2rem;
+    margin-left: 22em;
+    width: 40%;
+    background-color: cornflowerblue;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+
+}
+#loginForm button{
+    padding: 0.5rem 1rem;
+    margin: 0.5rem;
+    border: none;
+    background-color: #0b1b2a;
+    color: white;
+    font-size: medium;
+    cursor: pointer;
+    border-radius: 5px;
+}
