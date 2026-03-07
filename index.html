@@ -1,14 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./login.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <title>Document</title>
-
+  <meta charset="UTF-8">
+  <title>Portal Login</title>
 </head>
 <body>
-    
+  <h1>EduPortal Login</h1>
+  <p>
+    <b>Login as:</b>
+    <input type="radio" name="role" value="admin" onclick="switchRole('admin')" checked> Administrator
+    <input type="radio" name="role" value="student" onclick="switchRole('student')"> Student
+  </p>
+  <hr>
+  <p>
+    <button onclick="switchTab('login')">Sign In</button>
+    <button onclick="switchTab('register')">Register</button>
+  </p>
+  <div id="loginForm">
+    <h2 id="loginTitle">Administrator Sign In</h2>
+
+    <p>
+      <label>Username:<br>
+        <input type="text" id="loginUser" placeholder="Enter username">
+      </label>
+    </p>
+    <p>
+      <label>Password:<br>
+        <input type="password" id="loginPass" placeholder="Enter password">
+      </label>
+    </p>
+    <button onclick="login()">Sign In</button>
+    <p id="loginMsg"></p>
+  </div>
+  <div id="registerForm" style="display:none">
+    <h2 id="registerTitle">Register Administrator Account</h2>
+
+    <p>
+      <label>Full Name:<br>
+        <input type="text" id="regName" placeholder="Your full name">
+      </label>
+    </p>
+    <p>
+      <label>Username:<br>
+        <input type="text" id="regUser" placeholder="Choose a username">
+      </label>
+    </p>
+    <p>
+      <label>Password:<br>
+        <input type="password" id="regPass" placeholder="Choose a password">
+      </label>
+    </p>
+    <p id="accessCodeField">
+      <label>Admin Access Code:<br>
+        <input type="password" id="regCode" placeholder="Enter admin access code">
+      </label>
+    </p>
+    <div id="studentExtraFields" style="display:none">
+      <p>
+        <label>Student ID:<br>
+          <input type="text" id="regStudentId" placeholder="e.g. STU-2024-001">
+        </label>
+      </p>
+      <p>
+        <label>Year Level:<br>
+          <select id="regYear">
+            <option value="">Select year level</option>
+            <option>1st Year</option>
+            <option>2nd Year</option>
+            <option>3rd Year</option>
+            <option>4th Year</option>
+          </select>
+        </label>
+      </p>
+    </div>
+    <button onclick="register()">Create Account</button>
+    <p id="registerMsg"></p>
+  </div>
+  <hr>
+  <div id="dashboard" style="display:none">
+    <h2>Welcome, <span id="dashName"></span>!</h2>
+    <p>Role: <b id="dashRole"></b></p>
+    <p id="dashExtra"></p>
+    <button onclick="logout()">Sign Out</button>
+  </div>
 </body>
 </html>
