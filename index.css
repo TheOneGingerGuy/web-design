@@ -269,7 +269,7 @@ summary::-webkit-details-marker{
 }
 
 .footerLink:hover{
-    font-size: large;
+    text-decoration: underline;
 }
 @media (min-width: 768px){
     main{
