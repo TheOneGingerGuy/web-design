@@ -94,7 +94,6 @@
       document.getElementById("loginMsg").textContent = "";
     }
 
-    // Auto-login if session exists
     window.addEventListener("DOMContentLoaded", () => {
       const session = localStorage.getItem("session");
       if (session) {

@@ -1,16 +1,22 @@
 /* Base */
 body{
+  display: flex;
   margin: 0;
   background-color: #ebf9ff;
   font-family: sans-serif;
   color: #0b1b2a;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;    
 }
 *,
 *::before,
 *::after{
   box-sizing: border-box;
 }
-
+#loginForm{
+    background-color: white;
+}
 header{
     display: flex;
     flex-direction: row-reverse;
