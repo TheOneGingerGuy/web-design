@@ -279,41 +279,87 @@ summary::-webkit-details-marker{
     margin: .5rem 0;
 }
 /* ===== FOOTER ===== */
-footer{
-        display: flex;
-        background-color: rgb(0,0,53);
-        height: 5rem;
-        color: white;
-        margin-top: 10px;
-        border-radius: 5px;
-        justify-content: space-between;
-        font-family: sans-serif;
-        font-size: small;
-    }
-    #logo{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 10px;
-    }
-    #article{
-        width: 10rem;
-        text-align: center;
-    }
-    #connect{
+footer {
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    bottom: 0;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-right: 15px;
-}
-
-.footerLink{
+    justify-content: space-between;
+    background-color: rgb(0,0,53);
     color: white;
-    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 1rem;
+    min-height: 4.5rem;
+    padding: 0.8rem 2.5vw 0.8rem 1vw;
+    box-shadow: 0 -2px 16px rgba(0,0,0,0.07);
+    z-index: 1000;
+    border-radius: 10px 10px 0 0;
+    gap: 1.5rem;
 }
 
-.footerLink:hover{
-    font-size: large;
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+}
+#logo img {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+#article {
+    flex: 1;
+    text-align: center;
+    font-size: 1.05rem;
+    color: #e0eaff;
+}
+#article p {
+    margin: 0.1em 0;
+}
+
+#connect {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    margin-right: 0;
+}
+.footerLink {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.2em 0.7em;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.footerLink:hover, .footerLink:focus {
+    background: #fff;
+    color: #003366;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    outline: none;
+}
+
+@media (max-width: 700px) {
+    footer {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.2rem 0.5rem;
+        text-align: center;
+        gap: 0.7rem;
+        min-height: unset;
+        border-radius: 10px 10px 0 0;
+    }
+    #connect {
+        justify-content: center;
+        gap: 0.7rem;
+        margin: 0.5rem 0 0 0;
+    }
+    #logo {
+        justify-content: center;
+        margin: 0 auto;
+    }
 }
 /* ===== TABLET & DESKTOP ===== */
 @media (min-width: 768px){
