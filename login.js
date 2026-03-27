@@ -74,7 +74,7 @@
       }
 
       localStorage.setItem("session", JSON.stringify({ key: currentRole + "_" + user, role: currentRole }));
-      showDashboard(data);
+      window.location.href = "dashboard.html";
     }
 
     function showDashboard(data) {
