@@ -31,12 +31,16 @@ header{
     z-index: 100;
     align-items: center;
     padding: 0 1rem;
+    position: relative;
 }
 /* Account Menu */
 .account-menu {
-    position: relative;
+    position: absolute;
+    top: 15px;
+    right: 15px;
     display: flex;
     align-items: center;
+    z-index: 101;
 }
 
 .account-btn {
@@ -51,6 +55,7 @@ header{
     align-items: center;
     gap: 0.5rem;
     transition: background-color 0.3s ease;
+    white-space: nowrap;
 }
 
 .account-btn:hover {
