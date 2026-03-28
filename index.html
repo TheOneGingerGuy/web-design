@@ -73,9 +73,10 @@
       </form>
     </div>
   </div>
-  <script>
-      const ADMIN_ACCESS_CODE = "ADMIN2024";
+    <script>
+    const ADMIN_ACCESS_CODE = "ADMIN2024";
     let currentRole = "admin";
+
     function switchRole(role) {
       currentRole = role;
       document.getElementById("loginTitle").textContent =
@@ -91,6 +92,8 @@
     function switchTab(tab) {
       document.getElementById("loginForm").style.display = tab === "login" ? "block" : "none";
       document.getElementById("registerForm").style.display = tab === "register" ? "block" : "none";
+      document.getElementById("tabLogin").classList.toggle("active", tab === "login");
+      document.getElementById("tabRegister").classList.toggle("active", tab === "register");
     }
 
     function register() {
@@ -114,7 +117,6 @@
           return;
         }
         localStorage.setItem("admin_" + user, JSON.stringify({ name, username: user, password: pass, role: "admin" }));
-
       } else {
         const studentId = document.getElementById("regStudentId").value.trim();
         const year = document.getElementById("regYear").value;
@@ -129,9 +131,7 @@
         localStorage.setItem("student_" + user, JSON.stringify({ name, username: user, password: pass, role: "student", studentId, year }));
       }
 
-      localStorage.setItem("savedUsername", user);
-      localStorage.setItem("savedPassword", pass);
-      localStorage.setItem("savedRole", currentRole);
+      document.getElementById("registerMsg").style.color = "#2e7d32";
       document.getElementById("registerMsg").textContent = "Account created! You can now sign in.";
     }
 
@@ -151,7 +151,7 @@
         return;
       }
 
-      const rememberMe = document.getElementById("rememberMe")?.checked;
+      const rememberMe = document.getElementById("rememberMe").checked;
       if (rememberMe) {
         localStorage.setItem("savedUsername", user);
         localStorage.setItem("savedPassword", pass);
@@ -161,25 +161,9 @@
         localStorage.removeItem("savedPassword");
         localStorage.removeItem("savedRole");
       }
+
       localStorage.setItem("session", JSON.stringify({ key: currentRole + "_" + user, role: currentRole }));
       window.location.href = "dashboard.html";
-    }
-
-    function showDashboard(data) {
-      document.getElementById("loginForm").style.display = "none";
-      document.getElementById("registerForm").style.display = "none";
-      document.getElementById("dashboard").style.display = "block";
-      document.getElementById("dashName").textContent = data.name;
-      document.getElementById("dashRole").textContent = data.role === "admin" ? "Administrator" : "Student";
-      document.getElementById("dashExtra").textContent =
-        data.role === "student" ? "Student ID: " + data.studentId + " | Year: " + data.year : "";
-    }
-
-    function logout() {
-      localStorage.removeItem("session");
-      document.getElementById("dashboard").style.display = "none";
-      document.getElementById("loginForm").style.display = "block";
-      document.getElementById("loginMsg").textContent = "";
     }
 
     window.addEventListener("DOMContentLoaded", () => {
@@ -196,9 +180,11 @@
       const savedRole = localStorage.getItem("savedRole");
       const savedUsername = localStorage.getItem("savedUsername");
       const savedPassword = localStorage.getItem("savedPassword");
+
       if (savedRole) {
         switchRole(savedRole);
-        document.querySelector(`input[name='role'][value='${savedRole}']`)?.checked = true;
+        const radio = document.querySelector(`input[name='role'][value='${savedRole}']`);
+        if (radio) radio.checked = true;
       }
       if (savedUsername) document.getElementById("loginUser").value = savedUsername;
       if (savedPassword) document.getElementById("loginPass").value = savedPassword;
