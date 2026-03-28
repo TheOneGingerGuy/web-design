@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - EduPortal</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-card">
+      <h1 class="login-title">Register</h1>
+      <div class="role-switch">
+        <label><input type="radio" name="role" value="admin" id="roleAdmin" checked> Administrator</label>
+        <label><input type="radio" name="role" value="student" id="roleStudent"> Student</label>
+      </div>
+      <form id="registerForm" class="form-section">
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" placeholder="Your full name" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="regUser">Username</label>
+          <input type="text" id="regUser" placeholder="Choose a username" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="regPass">Password</label>
+          <input type="password" id="regPass" placeholder="Choose a password" autocomplete="new-password">
+        </div>
+        <div class="form-group" id="accessCodeField">
+          <label for="regCode">Admin Access Code</label>
+          <input type="password" id="regCode" placeholder="Enter admin access code">
+        </div>
+        <div id="studentExtraFields" style="display:none">
+          <div class="form-group">
+            <label for="regStudentId">Student ID</label>
+            <input type="text" id="regStudentId" placeholder="e.g. STU-2024-001">
+          </div>
+          <div class="form-group">
+            <label for="regYear">Year Level</label>
+            <select id="regYear">
+              <option value="">Select year level</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="action-btn" onclick="register()">Create Account</button>
+        <p id="registerMsg" class="form-msg"></p>
+      </form>
+      <div style="text-align:center;margin-top:1rem;">
+        <span>Already have an account? <a href="signin.html">Sign In</a></span>
+      </div>
+    </div>
+  </div>
+  <script src="login.js"></script>
+  <script>
+    // Ensure role switching works on register.html
+    document.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('roleAdmin').addEventListener('click', function() { switchRole('admin'); });
+      document.getElementById('roleStudent').addEventListener('click', function() { switchRole('student'); });
+      // Set default state
+      switchRole(document.getElementById('roleAdmin').checked ? 'admin' : 'student');
+    });
+  </script>
+</body>
+</html>

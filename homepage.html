@@ -8,7 +8,17 @@
     <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
-    <script src="./script.js"></script>
+        <script src="./script.js"></script>
+        <!-- Modal for entry options -->
+        <div id="entryModal" class="modal-overlay" style="display:none;">
+            <div class="modal-content">
+                <h2>Welcome! How would you like to continue?</h2>
+                <div class="modal-actions">
+                    <button onclick="window.location.href='auth.html'">Sign In/Register</button>
+                    <button onclick="closeEntryModal()">Continue as Guest</button>
+                </div>
+            </div>
+        </div>
   <!-- Header Starts -->
     <header>
          <nav>
@@ -27,6 +37,7 @@
                     <li><a href="./schedule.html" class="link">Schedule</a></li>
                     <li><a href="./resources.html" class="link">Resources</a></li>
                     <li><a href="dashboard.html" class="link">Dashboard</a></li>
+                    <li><a href="auth.html" class="link">Sign In/Register</a></li>
                 </ul>
             </details>
              <ul class="menu">
@@ -35,6 +46,7 @@
                     <li><a href="./schedule.html" class="link">Schedule</a></li>
                     <li><a href="./resources.html" class="link">Resources</a></li>
                     <li><a href="dashboard.html" class="link">Dashboard</a></li>
+                    <li><a href="auth.html" class="link">Sign In/Register</a></li>
                 </ul>
             </div>
        </nav>

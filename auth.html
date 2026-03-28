@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign In or Register - EduPortal</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <style>
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .login-container {
+        flex: 1 0 auto;
+      }
+    </style>
+    <header style="margin-bottom: 2.5rem;">
+      <nav>
+        <div class="wrap" aria-label="Primary">
+          <span class="brand_logo" aria-hidden="true">
+            <img src="./images/android-chrome-192x192.png" alt="Logo" width="36" style="vertical-align:middle;">
+          </span>
+          <ul class="menu">
+            <li><a href="homepage.html" class="link">Home</a></li>
+            <li><a href="auth.html" class="link active">Sign In/Register</a></li>
+            <li><a href="dashboard.html" class="link">Dashboard</a></li>
+            <li><a href="resources.html" class="link">Resources</a></li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+  <div class="login-container">
+    <div class="login-card" style="margin-bottom: 2.5rem;">
+      <div class="login-toggle" style="margin-bottom:1.5rem;">
+        <button class="toggle-btn active" id="tabSignIn" onclick="showTab('signin')">Sign In</button>
+        <button class="toggle-btn" id="tabRegister" onclick="showTab('register')">Register</button>
+      </div>
+      <form id="signinForm" class="form-section">
+        <h2 id="loginTitle" class="login-title" style="margin-bottom:1rem;">Administrator Sign In</h2>
+        <div class="role-switch">
+          <label><input type="radio" name="role" value="admin" onclick="switchRole('admin')" checked> Administrator</label>
+          <label><input type="radio" name="role" value="student" onclick="switchRole('student')"> Student</label>
+        </div>
+        <div class="form-group">
+          <label for="loginUser">Username</label>
+          <input type="text" id="loginUser" placeholder="Enter username" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="loginPass">Password</label>
+          <input type="password" id="loginPass" placeholder="Enter password" autocomplete="current-password">
+        </div>
+        <button type="button" class="action-btn" onclick="login()">Sign In</button>
+        <p id="loginMsg" class="form-msg"></p>
+      </form>
+      <form id="registerForm" class="form-section" style="display:none;">
+        <h2 id="registerTitle" class="login-title" style="margin-bottom:1rem;">Register Administrator Account</h2>
+        <div class="role-switch">
+          <label><input type="radio" name="role" value="admin" id="roleAdmin" checked> Administrator</label>
+          <label><input type="radio" name="role" value="student" id="roleStudent"> Student</label>
+        </div>
+        <div class="form-group">
+          <label for="regName">Full Name</label>
+          <input type="text" id="regName" placeholder="Your full name" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="regUser">Username</label>
+          <input type="text" id="regUser" placeholder="Choose a username" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label for="regPass">Password</label>
+          <input type="password" id="regPass" placeholder="Choose a password" autocomplete="new-password">
+        </div>
+        <div class="form-group" id="accessCodeField">
+          <label for="regCode">Admin Access Code</label>
+          <input type="password" id="regCode" placeholder="Enter admin access code">
+        </div>
+        <div id="studentExtraFields" style="display:none">
+          <div class="form-group">
+            <label for="regStudentId">Student ID</label>
+            <input type="text" id="regStudentId" placeholder="e.g. STU-2024-001">
+          </div>
+          <div class="form-group">
+            <label for="regYear">Year Level</label>
+            <select id="regYear">
+              <option value="">Select year level</option>
+              <option>1st Year</option>
+              <option>2nd Year</option>
+              <option>3rd Year</option>
+              <option>4th Year</option>
+            </select>
+          </div>
+        </div>
+        <button type="button" class="action-btn" onclick="register()">Create Account</button>
+        <p id="registerMsg" class="form-msg"></p>
+      </form>
+      <div style="text-align:center;margin-top:1.5rem;">
+        <button class="action-btn" style="background:#aaa; color:#222;" onclick="window.location.href='homepage.html'">Continue as Guest</button>
+      </div>
+    </div>
+  </div>
+  <script src="login.js"></script>
+  <script>
+    function showTab(tab) {
+      document.getElementById('signinForm').style.display = tab === 'signin' ? 'block' : 'none';
+      document.getElementById('registerForm').style.display = tab === 'register' ? 'block' : 'none';
+      document.getElementById('tabSignIn').classList.toggle('active', tab === 'signin');
+      document.getElementById('tabRegister').classList.toggle('active', tab === 'register');
+      // Set correct role switch and label for each tab
+      if (tab === 'signin') {
+        switchRole(document.querySelector('#signinForm input[name=role]:checked').value);
+      } else {
+        switchRole(document.querySelector('#registerForm input[name=role]:checked').value);
+      }
+    }
+    // Register page role switcher
+    document.addEventListener('DOMContentLoaded', function() {
+      // For register tab
+      var adminRadio = document.getElementById('roleAdmin');
+      var studentRadio = document.getElementById('roleStudent');
+      if (adminRadio && studentRadio) {
+        adminRadio.addEventListener('click', function() { switchRole('admin'); });
+        studentRadio.addEventListener('click', function() { switchRole('student'); });
+        switchRole(adminRadio.checked ? 'admin' : 'student');
+      }
+      // For sign in tab
+      var signInAdmin = document.querySelector('#signinForm input[value=admin]');
+      var signInStudent = document.querySelector('#signinForm input[value=student]');
+      if (signInAdmin && signInStudent) {
+        signInAdmin.addEventListener('click', function() { switchRole('admin'); });
+        signInStudent.addEventListener('click', function() { switchRole('student'); });
+        switchRole(signInAdmin.checked ? 'admin' : 'student');
+      }
+    });
+  </script>
+</body>
+</html>
