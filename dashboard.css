@@ -26,7 +26,6 @@ header{
     color: black;
     justify-content: space-between;
     border-radius: 5px;
-    position: sticky;
     top: 10px;
     z-index: 100;
     align-items: center;
@@ -36,51 +35,53 @@ header{
 /* Account Menu */
 .account-menu {
     position: absolute;
-    top: 15px;
-    right: 15px;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
     display: flex;
     align-items: center;
     z-index: 101;
 }
 
 .account-btn {
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
+    background-color: rgb(0, 0, 53);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
     cursor: pointer;
     font-size: 1rem;
-    color: black;
+    color: white;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    transition: background-color 0.2s;
     white-space: nowrap;
 }
 
 .account-btn:hover {
-    background-color: #e0e0e0;
+    background-color: #00509e;
 }
 
 .account-dropdown {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 0.5rem);
     right: 0;
     background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border: 1px solid #c7e0f7;
+    border-radius: 6px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
     min-width: 150px;
-    margin-top: 0.5rem;
 }
 
 .account-link {
     display: block;
     padding: 0.75rem 1rem;
-    color: black;
+    color: rgb(0, 0, 53);
     text-decoration: none;
-    border-bottom: 1px solid #eee;
-    transition: background-color 0.2s ease;
+    font-weight: 500;
+    border-bottom: 1px solid #ebf9ff;
+    transition: background-color 0.2s;
 }
 
 .account-link:last-child {
@@ -88,7 +89,8 @@ header{
 }
 
 .account-link:hover {
-    background-color: #f5f5f5;
+    background-color: #ebf9ff;
+    color: #00509e;
 }
 header .content{
     text-align: end;
