@@ -90,7 +90,9 @@
     accent-color: #003366;
     margin: 0;
     flex-shrink: 0;
-    display: block;
+    padding: 0;              /* override the generic input padding */
+    border: none;            /* override the generic input border */
+    background: transparent; /* override the generic input background */
 }
 .form-group.remember label {
     font-size: 0.95rem;
