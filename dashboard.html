@@ -42,6 +42,15 @@
             <h3>Clockwork</h3>
             <img src="./images/android-chrome-192x192.png" alt="" class="img" width="50" height="50">
         </div>
+        <div class="account-menu">
+            <button id="accountBtn" class="account-btn" onclick="toggleAccountMenu()">
+                <span id="dashName">Account</span>
+                <span aria-hidden="true">▼</span>
+            </button>
+            <div id="accountDropdown" class="account-dropdown" style="display:none">
+                <a href="#" onclick="logout()" class="account-link">Logout</a>
+            </div>
+        </div>
     </header>  
 <!-- DASHBOARD CONTENT -->
 <main class="dashboard">

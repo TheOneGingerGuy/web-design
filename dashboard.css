@@ -29,6 +29,61 @@ header{
     position: sticky;
     top: 10px;
     z-index: 100;
+    align-items: center;
+    padding: 0 1rem;
+}
+/* Account Menu */
+.account-menu {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.account-btn {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: black;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.account-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    min-width: 150px;
+    margin-top: 0.5rem;
+}
+
+.account-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: black;
+    text-decoration: none;
+    border-bottom: 1px solid #eee;
+    transition: background-color 0.2s ease;
+}
+
+.account-link:last-child {
+    border-bottom: none;
+}
+
+.account-link:hover {
+    background-color: #f5f5f5;
 }
 header .content{
     text-align: end;
