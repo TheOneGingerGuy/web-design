@@ -54,6 +54,9 @@
         localStorage.setItem("student_" + user, JSON.stringify({ name, username: user, password: pass, role: "student", studentId, year }));
       }
 
+      localStorage.setItem("savedUsername", user);
+      localStorage.setItem("savedPassword", pass);
+      localStorage.setItem("savedRole", currentRole);
       document.getElementById("registerMsg").textContent = "Account created! You can now sign in.";
     }
 
@@ -73,6 +76,16 @@
         return;
       }
 
+      const rememberMe = document.getElementById("rememberMe")?.checked;
+      if (rememberMe) {
+        localStorage.setItem("savedUsername", user);
+        localStorage.setItem("savedPassword", pass);
+        localStorage.setItem("savedRole", currentRole);
+      } else {
+        localStorage.removeItem("savedUsername");
+        localStorage.removeItem("savedPassword");
+        localStorage.removeItem("savedRole");
+      }
       localStorage.setItem("session", JSON.stringify({ key: currentRole + "_" + user, role: currentRole }));
       window.location.href = "dashboard.html";
     }
@@ -99,6 +112,20 @@
       if (session) {
         const s = JSON.parse(session);
         const stored = localStorage.getItem(s.key);
-        if (stored) showDashboard(JSON.parse(stored));
+        if (stored) {
+          window.location.href = "dashboard.html";
+          return;
+        }
       }
+
+      const savedRole = localStorage.getItem("savedRole");
+      const savedUsername = localStorage.getItem("savedUsername");
+      const savedPassword = localStorage.getItem("savedPassword");
+      if (savedRole) {
+        switchRole(savedRole);
+        document.querySelector(`input[name='role'][value='${savedRole}']`)?.checked = true;
+      }
+      if (savedUsername) document.getElementById("loginUser").value = savedUsername;
+      if (savedPassword) document.getElementById("loginPass").value = savedPassword;
+      if (savedUsername || savedPassword) document.getElementById("rememberMe").checked = true;
     });
