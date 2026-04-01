@@ -11,25 +11,39 @@ document.addEventListener("click", (e) => {
 
 // On dashboard load, show user info if logged in
 window.addEventListener("DOMContentLoaded", () => {
-	const session = localStorage.getItem("session");
-	if (session) {
-		const s = JSON.parse(session);
-		const stored = localStorage.getItem(s.key);
-		if (stored) {
-			const data = JSON.parse(stored);
-			// Optionally, update dashboard page with user info
-			// Example: display name and role if you add elements for them
-			const nameEl = document.getElementById("dashName");
-			const roleEl = document.getElementById("dashRole");
-			const extraEl = document.getElementById("dashExtra");
-			if (nameEl) nameEl.textContent = data.name;
-			if (roleEl) roleEl.textContent = data.role === "admin" ? "Administrator" : "Student";
-			if (extraEl) extraEl.textContent = data.role === "student" ? `Student ID: ${data.studentId} | Year: ${data.year}` : "";
-		}
-	} else {
-		// Redirect to login if no session
-		window.location.href = "index.html";
-	}
+    const session = localStorage.getItem("session");
+    
+    if (!session) {
+        window.location.href = "login.html";
+        return;
+    }
+
+    const s = JSON.parse(session);
+
+if (s.role === "guest") {
+    const accountBtn = document.getElementById("accountBtn");
+    if (accountBtn) {
+        accountBtn.textContent = "Log In";
+        accountBtn.onclick = () => window.location.href = "login.html";
+    }
+    document.querySelectorAll(".card").forEach(card => {
+        card.innerHTML = "<p>Please <a href='login.html'>log in</a> to view this content.</p>";
+    });
+    return;
+}
+
+    const stored = localStorage.getItem(s.key);
+    if (stored) {
+        const data = JSON.parse(stored);
+        const nameEl = document.getElementById("dashName");
+        const roleEl = document.getElementById("dashRole");
+        const extraEl = document.getElementById("dashExtra");
+        if (nameEl) nameEl.textContent = data.name;
+        if (roleEl) roleEl.textContent = data.role === "admin" ? "Administrator" : "Student";
+        if (extraEl) extraEl.textContent = data.role === "student" ? `Student ID: ${data.studentId} | Year: ${data.year}` : "";
+    } else {
+        window.location.href = "login.html";
+    }
 });
 
 function toggleAccountMenu() {
@@ -43,5 +57,5 @@ function logout() {
 	// Clear session storage
 	localStorage.removeItem("session");
 	// Redirect to login page
-	window.location.href = "index.html";
+	window.location.href = "login.html";
 }

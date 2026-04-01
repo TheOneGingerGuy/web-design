@@ -19,27 +19,24 @@ body{
 *, *::before, *::after {
     box-sizing: border-box;
 }
-header{
+header {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     background-color: white;
     color: black;
     justify-content: space-between;
-    border-radius: 5px;
-    top: 10px;
-    z-index: 100;
     align-items: center;
+    border-radius: 5px;
+    position: relative;
     padding: 0 1rem;
-    position: fixed;
+    z-index: 100;
 }
 /* Account Menu */
 .account-menu {
-    position: relative;
-    top: 50%;
-    right: 1rem;
-    transform: translateY(-50%);
+    margin-left: auto;    /* pushes it all the way to the right */
     display: flex;
     align-items: center;
+    position: relative;   /* only needed to anchor the dropdown */
     z-index: 101;
 }
 
@@ -121,6 +118,7 @@ nav{
     border-bottom:1px solid rgba(255,255,255,.08); 
     align-items: center;
     font-family: sans-serif;
+    margin-left: auto;
 }
 details{
     position: relative;

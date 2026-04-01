@@ -2,17 +2,16 @@
     const ADMIN_ACCESS_CODE = "ADMIN2024";
     let currentRole = "admin";
 
-    function switchRole(role) {
-      currentRole = role;
-      document.getElementById("loginTitle").textContent =
-        role === "admin" ? "Administrator Sign In" : "Student Sign In";
-      document.getElementById("registerTitle").textContent =
-        role === "admin" ? "Register Administrator Account" : "Register Student Account";
-      document.getElementById("accessCodeField").style.display =
-        role === "admin" ? "block" : "none";
-      document.getElementById("studentExtraFields").style.display =
-        role === "student" ? "block" : "none";
-    }
+function loginAsGuest() {
+    localStorage.setItem("session", JSON.stringify({ key: "guest", role: "guest" }));
+    window.location.href = "index.html";
+}
+function switchTab(tab) {
+    document.getElementById("loginForm").style.display = tab === "login" ? "flex" : "none";
+    document.getElementById("registerForm").style.display = tab === "register" ? "flex" : "none";
+    document.getElementById("tabLogin").classList.toggle("active", tab === "login");
+    document.getElementById("tabRegister").classList.toggle("active", tab === "register");
+}
 
     function switchTab(tab) {
       document.getElementById("loginForm").style.display = tab === "login" ? "block" : "none";
@@ -91,27 +90,32 @@
       window.location.href = "dashboard.html";
     }
 
-    window.addEventListener("DOMContentLoaded", () => {
-      const session = localStorage.getItem("session");
-      if (session) {
+window.addEventListener("DOMContentLoaded", () => {
+    const session = localStorage.getItem("session");
+    if (session) {
         const s = JSON.parse(session);
+        if (s.role === "guest") {
+            localStorage.removeItem("session"); // clear so login page works fresh
+            return;
+        }
         const stored = localStorage.getItem(s.key);
         if (stored) {
-          window.location.href = "dashboard.html";
-          return;
+            window.location.href = "dashboard.html";
+            return;
         }
-      }
+    }
 
-      const savedRole = localStorage.getItem("savedRole");
-      const savedUsername = localStorage.getItem("savedUsername");
-      const savedPassword = localStorage.getItem("savedPassword");
+    const savedRole = localStorage.getItem("savedRole");
+    const savedUsername = localStorage.getItem("savedUsername");
+    const savedPassword = localStorage.getItem("savedPassword");
 
-      if (savedRole) {
+    if (savedRole) {
         switchRole(savedRole);
         const radio = document.querySelector(`input[name='role'][value='${savedRole}']`);
         if (radio) radio.checked = true;
-      }
-      if (savedUsername) document.getElementById("loginUser").value = savedUsername;
-      if (savedPassword) document.getElementById("loginPass").value = savedPassword;
-      if (savedUsername || savedPassword) document.getElementById("rememberMe").checked = true;
-    });
+    }
+    if (savedUsername) document.getElementById("loginUser").value = savedUsername;
+    if (savedPassword) document.getElementById("loginPass").value = savedPassword;
+    if (savedUsername || savedPassword) document.getElementById("rememberMe").checked = true;
+    switchTab("login");
+});
