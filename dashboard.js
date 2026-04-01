@@ -1,15 +1,15 @@
 // Close dropdown when clicking outside
 document.addEventListener("click", (e) => {
-	const accountMenu = document.querySelector(".account-menu");
-	if (accountMenu && !accountMenu.contains(e.target)) {
-		const dropdown = document.getElementById("accountDropdown");
-		if (dropdown) {
-			dropdown.style.display = "none";
-		}
-	}
+    const accountMenu = document.querySelector(".account-menu");
+    const accountBtn = document.getElementById("accountBtn");
+    if (accountMenu && !accountMenu.contains(e.target) && e.target !== accountBtn) {
+        const dropdown = document.getElementById("accountDropdown");
+        if (dropdown) {
+            dropdown.style.display = "none";
+        }
+    }
 });
 
-// On dashboard load, show user info if logged in
 window.addEventListener("DOMContentLoaded", () => {
     const session = localStorage.getItem("session");
 
@@ -21,18 +21,14 @@ window.addEventListener("DOMContentLoaded", () => {
     const s = JSON.parse(session);
 
     if (s.role === "guest") {
-        // Show example cards with login hint
         document.getElementById("guestCourses").style.display = "block";
         document.getElementById("guestUpcoming").style.display = "block";
-        const accountBtn = document.getElementById("accountBtn");
-        if (accountBtn) {
-            accountBtn.textContent = "Log In";
-            accountBtn.onclick = () => window.location.href = "index.html";
-        }
+        const nameEl = document.getElementById("dashName");
+        if (nameEl) nameEl.textContent = "Log In";
         return;
     }
 
-    // Logged in — hide example cards, show empty dashboard
+    // Logged in — hide example cards
     document.getElementById("guestCourses").style.display = "none";
     document.getElementById("guestUpcoming").style.display = "none";
 
@@ -62,8 +58,6 @@ function toggleAccountMenu() {
 }
 
 function logout() {
-	// Clear session storage
-	localStorage.removeItem("session");
-	// Redirect to login page
-	window.location.href = "login.html";
+    localStorage.removeItem("session");
+    window.location.href = "index.html";
 }
