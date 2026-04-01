@@ -44,6 +44,7 @@ window.addEventListener("DOMContentLoaded", () => {
     } else {
         window.location.href = "index.html";
     }
+});
 
 function toggleAccountMenu() {
 	const dropdown = document.getElementById("accountDropdown");
@@ -57,4 +58,4 @@ function logout() {
 	localStorage.removeItem("session");
 	// Redirect to login page
 	window.location.href = "login.html";
-}});
+}
