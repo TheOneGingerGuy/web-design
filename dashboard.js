@@ -24,8 +24,11 @@ window.addEventListener("DOMContentLoaded", () => {
         // Show example cards with login hint
         document.getElementById("guestCourses").style.display = "block";
         document.getElementById("guestUpcoming").style.display = "block";
-        const nameEl = document.getElementById("dashName");
-if (nameEl) nameEl.textContent = "Log In";
+        const accountBtn = document.getElementById("accountBtn");
+        if (accountBtn) {
+            accountBtn.textContent = "Log In";
+            accountBtn.onclick = () => window.location.href = "index.html";
+        }
         return;
     }
 
