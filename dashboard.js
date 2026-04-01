@@ -24,11 +24,8 @@ window.addEventListener("DOMContentLoaded", () => {
         // Show example cards with login hint
         document.getElementById("guestCourses").style.display = "block";
         document.getElementById("guestUpcoming").style.display = "block";
-        const accountBtn = document.getElementById("accountBtn");
-        if (accountBtn) {
-            accountBtn.textContent = "Log In";
-            accountBtn.onclick = () => window.location.href = "index.html";
-        }
+        const nameEl = document.getElementById("dashName");
+if (nameEl) nameEl.textContent = "Log In";
         return;
     }
 
@@ -47,10 +44,18 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 function toggleAccountMenu() {
-	const dropdown = document.getElementById("accountDropdown");
-	if (dropdown) {
-		dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
-	}
+    const session = localStorage.getItem("session");
+    const s = session ? JSON.parse(session) : null;
+
+    if (!s || s.role === "guest") {
+        window.location.href = "index.html";
+        return;
+    }
+
+    const dropdown = document.getElementById("accountDropdown");
+    if (dropdown) {
+        dropdown.style.display = dropdown.style.display === "none" ? "block" : "none";
+    }
 }
 
 function logout() {
