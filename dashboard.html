@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clockwork – Dashboard</title>
     <link rel="stylesheet" href="./dashboard.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
 
-<!-- SAME HEADER -->
 <header>
     <div class="content">
         <h3>Clockwork</h3>
@@ -48,44 +46,48 @@
         </div>
     </div>
 </header>
-<!-- DASHBOARD CONTENT -->
-<main class="dashboard">
-    <section class="dashboardCards" id="dashboardCards">
-    <div class="card" id="guestCourses">
-        <h2>Courses</h2>
-        <ul>
-            <li>JavaScript Basics</li>
-            <li>Python for Beginners</li>
-            <li>HTML and CSS</li>
-        </ul>
-        <p class="guest-hint"><a href="index.html">Log in</a> to add your own</p>
-    </div>
 
-    <div class="card" id="guestUpcoming">
-        <h2>Upcoming</h2>
-        <p><strong>Tutoring</strong><br>Monday, April 15</p>
-        <p><strong>Group Study</strong><br>Wednesday, April 17</p>
-        <p class="guest-hint"><a href="index.html">Log in</a> to add your own</p>
-    </div>
-</section>
+<main class="dashboard">
+    <section class="dashboardHeader">
+        <h1>Dashboard</h1>
+        <p>Track your progress and access various resources</p>
+    </section>
+
+    <section class="dashboardCards">
+        <div class="card" id="guestCourses" style="display:none">
+            <h2>Courses</h2>
+            <ul>
+                <li>JavaScript Basics</li>
+                <li>Python for Beginners</li>
+                <li>HTML and CSS</li>
+            </ul>
+            <p class="guest-hint"><a href="index.html">Log in</a> to add your own</p>
+        </div>
+
+        <div class="card" id="guestUpcoming" style="display:none">
+            <h2>Upcoming</h2>
+            <p><strong>Tutoring</strong><br>Monday, April 15</p>
+            <p><strong>Group Study</strong><br>Wednesday, April 17</p>
+            <p class="guest-hint"><a href="index.html">Log in</a> to add your own</p>
+        </div>
+    </section>
 </main>
 
-<!-- SAME FOOTER -->
 <footer>
-        <div id="logo">
-            <img src="./images/android-chrome-192x192.png" alt="Clockwork logo" width="50">
-        </div>
-        <div id="article">
-            <p>Western Maricopa Education Center</p>
-            <p>© 2026 Clockwork</p>
-        </div>
-        <div id="connect">
-            <a href="./about.html" class="footerLink">About</a>
-            <a href="./about.html" class="footerLink">Contact</a>
-            <a href="./about.html" class="footerLink">Help</a>
-        </div>
-    </footer>
-    <script src="./dashboard.js"></script>
+    <div id="logo">
+        <img src="./images/android-chrome-192x192.png" alt="Clockwork logo" width="50">
+    </div>
+    <div id="article">
+        <p>Western Maricopa Education Center</p>
+        <p>© 2026 Clockwork</p>
+    </div>
+    <div id="connect">
+        <a href="./about.html" class="footerLink">About</a>
+        <a href="./about.html" class="footerLink">Contact</a>
+        <a href="./about.html" class="footerLink">Help</a>
+    </div>
+</footer>
 
+<script src="./dashboard.js"></script>
 </body>
 </html>

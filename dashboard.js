@@ -14,14 +14,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const session = localStorage.getItem("session");
 
     if (!session) {
-        // No session = treat as guest instead of redirecting
         localStorage.setItem("session", JSON.stringify({ key: "guest", role: "guest" }));
         document.getElementById("guestCourses").style.display = "block";
         document.getElementById("guestUpcoming").style.display = "block";
         const nameEl = document.getElementById("dashName");
         if (nameEl) nameEl.textContent = "Log In";
         return;
-    }
+	}
 
     const s = JSON.parse(session);
 
