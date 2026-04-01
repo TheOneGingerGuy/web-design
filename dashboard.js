@@ -12,39 +12,38 @@ document.addEventListener("click", (e) => {
 // On dashboard load, show user info if logged in
 window.addEventListener("DOMContentLoaded", () => {
     const session = localStorage.getItem("session");
-    
+
     if (!session) {
-        window.location.href = "login.html";
+        window.location.href = "index.html";
         return;
     }
 
     const s = JSON.parse(session);
 
-if (s.role === "guest") {
-    const accountBtn = document.getElementById("accountBtn");
-    if (accountBtn) {
-        accountBtn.textContent = "Log In";
-        accountBtn.onclick = () => window.location.href = "login.html";
+    if (s.role === "guest") {
+        // Show example cards with login hint
+        document.getElementById("guestCourses").style.display = "block";
+        document.getElementById("guestUpcoming").style.display = "block";
+        const accountBtn = document.getElementById("accountBtn");
+        if (accountBtn) {
+            accountBtn.textContent = "Log In";
+            accountBtn.onclick = () => window.location.href = "index.html";
+        }
+        return;
     }
-    document.querySelectorAll(".card").forEach(card => {
-        card.innerHTML = "<p>Please <a href='login.html'>log in</a> to view this content.</p>";
-    });
-    return;
-}
+
+    // Logged in — hide example cards, show empty dashboard
+    document.getElementById("guestCourses").style.display = "none";
+    document.getElementById("guestUpcoming").style.display = "none";
 
     const stored = localStorage.getItem(s.key);
     if (stored) {
         const data = JSON.parse(stored);
         const nameEl = document.getElementById("dashName");
-        const roleEl = document.getElementById("dashRole");
-        const extraEl = document.getElementById("dashExtra");
         if (nameEl) nameEl.textContent = data.name;
-        if (roleEl) roleEl.textContent = data.role === "admin" ? "Administrator" : "Student";
-        if (extraEl) extraEl.textContent = data.role === "student" ? `Student ID: ${data.studentId} | Year: ${data.year}` : "";
     } else {
-        window.location.href = "login.html";
+        window.location.href = "index.html";
     }
-});
 
 function toggleAccountMenu() {
 	const dropdown = document.getElementById("accountDropdown");

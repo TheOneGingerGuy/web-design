@@ -140,6 +140,23 @@ summary{
     border:0;
     clip-path: rect(0,0,0,0);
 }
+.guest-hint {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px solid #ebf9ff;
+    padding-top: 0.75rem;
+}
+
+.guest-hint a {
+    color: #003366;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.guest-hint a:hover {
+    text-decoration: underline;
+}
  .content{
     position: relative;
     display: flex;
