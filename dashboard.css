@@ -226,6 +226,10 @@ summary::-webkit-details-marker{
     transition: background 0.18s, color 0.18s, box-shadow 0.18s;
 }
 @media (max-width:700px){
+        nav {
+            margin-left: auto;
+            order: 2;
+        }
         summary{
             display:block; 
             margin-bottom: 1rem; 
@@ -239,16 +243,27 @@ summary::-webkit-details-marker{
             width: 100px;
             display: none;
             padding: 0.5rem 0;
-           
+        }
+        .wrap{
+            padding: 0;
+            justify-content: flex-end;
+        }
+        details{
+            top: 0;
+            margin-left: auto;
+        }
+        summary {
+            display: block;
+            margin-bottom: 1rem;
         }
         .menu .li{
             margin-right: 1rem;
            
         }
-        details[open] .menu{
+       details[open] .menu {
             display: flex;
-            right: 2rem;
-           
+            right: 0;      
+            left: auto;    
         }
         details[open] .hamburger{
             background: transparent; 
@@ -262,6 +277,9 @@ summary::-webkit-details-marker{
         details[open] .hamburger::after{
             transform: rotate(-45deg);
             top:0;
+        }
+        .wrap > ul.menu {
+            display: none;
         }
     }
 /* ===== MAIN (MOBILE DEFAULT) ===== */
