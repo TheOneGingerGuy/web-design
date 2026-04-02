@@ -12,18 +12,18 @@
 <body>
 
   <!-- Header Starts -->
-  <header>
-         <nav>
-            <div class="wrap" aria-label="Primary">
-                <span class="brand_logo"aria-hidden="true">
-                    <img src="" alt="">
-                </span>
-     <!-- Toggle to open and close hamburger menu -->
-         <details>
-            <span class="sr-only" aria-hidden="true"></span>
+ <header>
+    <div class="content">
+        <h3>Clockwork</h3>
+        <img src="./images/android-chrome-192x192.png" alt="" class="img" width="50" height="50">
+    </div>
+
+    <nav>
+        <div class="wrap" aria-label="Primary">
+            <details>
                 <summary aria-label="Toggle Menu">
                     <span class="hamburger"></span>
-                </summary>  
+                </summary>
                 <ul class="menu">
                     <li><a href="./index.html" class="link">Home</a></li>
                     <li><a href="./schedule.html" class="link">Schedule</a></li>
@@ -31,20 +31,25 @@
                     <li><a href="dashboard.html" class="link">Dashboard</a></li>
                 </ul>
             </details>
-             <ul class="menu">
-                    <li><a href="./index.html" class="link">Home</a></li>
-                    <li><a href="./schedule.html" class="link">Schedule</a></li>
-                    <li><a href="./resources.html" class="link">Resources</a></li>
-                    <li><a href="dashboard.html" class="link">Dashboard</a></li>
-                </ul>
-            </div>
-       </nav>
+            <ul class="menu">
+                <li><a href="./index.html" class="link">Home</a></li>
+                <li><a href="./schedule.html" class="link">Schedule</a></li>
+                <li><a href="./resources.html" class="link">Resources</a></li>
+                <li><a href="dashboard.html" class="link">Dashboard</a></li>
+            </ul>
         </div>
-        <div class="content"> 
-            <h3>Clockwork</h3>
-            <img src="./images/android-chrome-192x192.png" alt="" class="img" width="50" height="50">
+    </nav>
+
+    <div class="account-menu">
+        <button id="accountBtn" class="account-btn" onclick="toggleAccountMenu()">
+            <span id="dashName">Account</span>
+            <span aria-hidden="true">▼</span>
+        </button>
+        <div id="accountDropdown" class="account-dropdown" style="display:none">
+            <a href="#" onclick="logout()" class="account-link">Logout</a>
         </div>
-    </header>  
+    </div>
+</header>
   <!-- Header Ends -->
 
   <main class="page">

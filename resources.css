@@ -10,17 +10,82 @@ body{
 *::after{
   box-sizing: border-box;
 }
-
-header{
+body{
+    background-color: #ebf9ff;
+}
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+header {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: row;
     background-color: white;
     color: black;
     justify-content: space-between;
+    align-items: center;
     border-radius: 5px;
-    position: sticky;
-    top: 10px;
+    position: relative;
+    padding: 0 1rem;
     z-index: 100;
+}
+/* Account Menu */
+.account-menu {
+    margin-left: auto;    /* pushes it all the way to the right */
+    display: flex;
+    align-items: center;
+    position: relative;   /* only needed to anchor the dropdown */
+    z-index: 101;
+}
+
+.account-btn {
+    background-color: rgb(0,0,53);
+    border: none;
+    padding: 0.5rem 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.account-btn:hover {
+    background-color: #00509e;
+}
+
+.account-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    background-color: white;
+    border: 1px solid #c7e0f7;
+    border-radius: 6px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+    min-width: 150px;
+}
+
+.account-link {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: rgb(0, 0, 53);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid #ebf9ff;
+    transition: background-color 0.2s;
+}
+
+.account-link:last-child {
+    border-bottom: none;
+}
+
+.account-link:hover {
+    background-color: #ebf9ff;
+    color: #00509e;
 }
 header .content{
     text-align: end;
@@ -51,6 +116,7 @@ nav{
     border-bottom:1px solid rgba(255,255,255,.08); 
     align-items: center;
     font-family: sans-serif;
+    margin-left: auto;
 }
 details{
     position: relative;
@@ -71,6 +137,23 @@ summary{
     white-space: nowrap;
     border:0;
     clip-path: rect(0,0,0,0);
+}
+.guest-hint {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px solid #ebf9ff;
+    padding-top: 0.75rem;
+}
+
+.guest-hint a {
+    color: #003366;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.guest-hint a:hover {
+    text-decoration: underline;
 }
  .content{
     position: relative;
@@ -130,12 +213,21 @@ summary::-webkit-details-marker{
     text-decoration: none;
     font-weight: 400;
     font-size: large;
+    padding: 0.2em 0.7em;
 }
 .link:hover{
-    color: navy;
-    font-size: larger;
+    background: #003366;
+    color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    outline: none;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
 }
 @media (max-width:700px){
+        nav {
+            margin-left: auto;
+            order: 2;
+        }
         summary{
             display:block; 
             margin-bottom: 1rem; 
@@ -149,16 +241,28 @@ summary::-webkit-details-marker{
             width: 100px;
             display: none;
             padding: 0.5rem 0;
-           
+        }
+        .wrap{
+            padding: 0;
+            justify-content: flex-end;
+        }
+        details{
+            top: 0;
+            margin-left: auto;
+            margin-top: 15px;
+        }
+        summary {
+            display: block;
+            margin-bottom: 1rem;
         }
         .menu .li{
             margin-right: 1rem;
-           
         }
-        details[open] .menu{
+       details[open] .menu {
             display: flex;
-            right: 2rem;
-           
+            right: 0;      
+            left: auto;
+            margin: 2px;
         }
         details[open] .hamburger{
             background: transparent; 
@@ -172,6 +276,9 @@ summary::-webkit-details-marker{
         details[open] .hamburger::after{
             transform: rotate(-45deg);
             top:0;
+        }
+        .wrap > ul.menu {
+            display: none;
         }
     }
 /* Page */
@@ -255,42 +362,89 @@ summary::-webkit-details-marker{
 }
 
 /* Footer */
-footer{
-        display: flex;
-        background-color: rgb(0,0,53);
-        height: 5rem;
-        color: white;
-        margin-top: 10px;
-        border-radius: 5px;
-        justify-content: space-between;
-        font-family: sans-serif;
-        font-size: small;
-    }
-    #logo{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        margin-left: 10px;
-    }
-    #article{
-        width: 10rem;
-        text-align: center;
-    }
-    #connect{
+footer {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(0,0,53);
+    color: white;
+    font-family: sans-serif;
+    font-size: 1rem;
+    min-height: 4.5rem;
+    padding: 0.8rem 2.5vw 0.8rem 1vw;
+    box-shadow: 0 -2px 16px rgba(0,0,0,0.07);
+    z-index: 1000;
+    border-radius: 10px 10px 0 0;
+    gap: 1.5rem;
+}
+
+#logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+}
+#logo img {
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+#article {
+    flex: 1;
+    text-align: center;
+    font-size: 1.05rem;
+    color: #e0eaff;
+}
+#article p {
+    margin: 0.1em 0;
+}
+
+#connect {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-right: 15px;
+    gap: 1.2rem;
+    margin-right: 0;
 }
-
-.footerLink{
-    color: white;
+.footerLink {
+    color: #fff;
     text-decoration: none;
+    font-weight: 500;
+    padding: 0.2em 0.7em;
+    border-radius: 6px;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+.footerLink:hover, .footerLink:focus {
+    background: #fff;
+    color: #003366;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    outline: none;
 }
 
-.footerLink:hover{
-    font-size: large;
+@media (max-width: 700px) {
+    footer {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 1.2rem 0.5rem;
+        text-align: center;
+        gap: 0.7rem;
+        min-height: unset;
+        border-radius: 10px 10px 0 0;
+    }
+    #connect {
+        justify-content: center;
+        gap: 0.7rem;
+        margin: 0.5rem 0 0 0;
+    }
+    #logo {
+        justify-content: center;
+        margin: 0 auto;
+    }
 }
+
 /* Responsive */
 @media (max-width: 900px){
   .cards{
