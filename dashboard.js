@@ -51,7 +51,7 @@ function toggleAccountMenu() {
     const s = session ? JSON.parse(session) : null;
 
     if (!s || s.role === "guest") {
-        window.location.href = "index.html";
+        window.location.href = "login.html";
         return;
     }
 
