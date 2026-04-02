@@ -251,6 +251,7 @@ summary::-webkit-details-marker{
         details{
             top: 0;
             margin-left: auto;
+            margin-top: 15px;
         }
         summary {
             display: block;
@@ -262,7 +263,8 @@ summary::-webkit-details-marker{
        details[open] .menu {
             display: flex;
             right: 0;      
-            left: auto;    
+            left: auto;
+            margin: 2px;
         }
         details[open] .hamburger{
             background: transparent; 
@@ -281,6 +283,7 @@ summary::-webkit-details-marker{
             display: none;
         }
     }
+    /* Header */
 /* ===== MAIN (MOBILE DEFAULT) ===== */
 .dashboard{
     padding: 2rem 1.5rem;
