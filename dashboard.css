@@ -258,7 +258,6 @@ summary::-webkit-details-marker{
         }
         .menu .li{
             margin-right: 1rem;
-           
         }
        details[open] .menu {
             display: flex;
