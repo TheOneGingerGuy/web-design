@@ -52,53 +52,39 @@
 </header>
   <!-- Header Ends -->
 
-  <main class="page">
- 
+<main class="page">
     <section class="hero">
       <h1>Schedule</h1>
       <p>Use this page to find opportunities for tutoring sessions or group study.</p>
     </section>
 
- 
     <section class="card">
-
       <!-- Tutoring table -->
       <div class="tableBlock">
         <div class="tableHeader">
           <div class="th">Tutoring</div>
           <div class="th">Topic</div>
+          <div class="th"></div>
         </div>
-
         <div class="row">
-          <div class="cell left">
-            <span class="personIcon" aria-hidden="true">👤</span>
-            <span class="time">10:00 AM</span>
-          </div>
+          <div class="cell left"><span class="personIcon">👤</span><span class="time">10:00 AM</span></div>
           <div class="cell right">JavaScript</div>
+          <div class="cell right"><button class="signup-btn" onclick="signUp('Tutoring', 'JavaScript', '10:00 AM')">Sign Up</button></div>
         </div>
-
         <div class="row">
-          <div class="cell left">
-            <span class="personIcon" aria-hidden="true">👤</span>
-            <span class="time">11:00 AM</span>
-          </div>
+          <div class="cell left"><span class="personIcon">👤</span><span class="time">11:00 AM</span></div>
           <div class="cell right">Python</div>
+          <div class="cell right"><button class="signup-btn" onclick="signUp('Tutoring', 'Python', '11:00 AM')">Sign Up</button></div>
         </div>
-
         <div class="row">
-          <div class="cell left">
-            <span class="personIcon" aria-hidden="true">👤</span>
-            <span class="time">1:00 PM</span>
-          </div>
+          <div class="cell left"><span class="personIcon">👤</span><span class="time">1:00 PM</span></div>
           <div class="cell right">HTML</div>
+          <div class="cell right"><button class="signup-btn" onclick="signUp('Tutoring', 'HTML', '1:00 PM')">Sign Up</button></div>
         </div>
-
         <div class="row">
-          <div class="cell left">
-            <span class="personIcon" aria-hidden="true">👤</span>
-            <span class="time">2:00 PM</span>
-          </div>
+          <div class="cell left"><span class="personIcon">👤</span><span class="time">2:00 PM</span></div>
           <div class="cell right">CSS</div>
+          <div class="cell right"><button class="signup-btn" onclick="signUp('Tutoring', 'CSS', '2:00 PM')">Sign Up</button></div>
         </div>
       </div>
 
@@ -107,25 +93,26 @@
         <div class="tableHeader">
           <div class="th">Group Study</div>
           <div class="th">Topic</div>
+          <div class="th"></div>
         </div>
-
         <div class="row">
-          <div class="cell left">
-            <span class="personIcon" aria-hidden="true">👥</span>
-            <span class="time">10:00 AM</span>
-          </div>
+          <div class="cell left"><span class="personIcon">👥</span><span class="time">10:00 AM</span></div>
           <div class="cell right">HTML</div>
+          <div class="cell right"><button class="signup-btn" onclick="signUp('Group Study', 'HTML', '10:00 AM')">Sign Up</button></div>
         </div>
-
         <div class="row">
-          <div class="cell left">
-            <span class="personIcon" aria-hidden="true">👥</span>
-            <span class="time">11:00 AM</span>
-          </div>
+          <div class="cell left"><span class="personIcon">👥</span><span class="time">11:00 AM</span></div>
           <div class="cell right">Python</div>
+          <div class="cell right"><button class="signup-btn" onclick="signUp('Group Study', 'Python', '11:00 AM')">Sign Up</button></div>
         </div>
       </div>
+    </section>
 
+    <!-- My Sessions card — only shown when logged in -->
+    <section class="card" id="mySessionsCard" style="display:none">
+      <h2>My Sessions</h2>
+      <ul id="mySessionsList"></ul>
+      <p id="noSessionsMsg" style="color:#999">No sessions signed up yet.</p>
     </section>
   </main>
 
