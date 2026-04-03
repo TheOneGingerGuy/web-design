@@ -66,6 +66,7 @@ header {
     font-weight: 500;
     border-bottom: 1px solid #ebf9ff;
     transition: background-color 0.2s;
+    font-family: sans-serif;
 }
 
 .account-link:last-child {
@@ -459,6 +460,7 @@ footer {
         display: flex;
         margin-left: 10px;
         font-weight: normal;
+        padding: 30px 30px;
     }
     #button1{
         font-weight: bold;
