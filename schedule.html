@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Clockwork - Schedule</title>
   <link rel="stylesheet" href="./schedule.css" />
-  <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./images/favicon_io (18)/favicon-32x32.png" type="image/x-icon">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 
@@ -15,7 +15,7 @@
   <header>
     <div class="content">
         <h3>Clockwork</h3>
-        <img src="./images/android-chrome-192x192.png" alt="" class="img" width="50" height="50">
+        <img src="./images/favicon_io (18)/clock-circle-svgrepo-com (1)-white.png" alt="Clockwork logo" class="img" width="50" height="50">
     </div>
 
     <nav>
@@ -57,15 +57,29 @@
       <h1>Schedule</h1>
       <p>Use this page to find opportunities for tutoring sessions or group study.</p>
     </section>
-
+        <section class="card" id="adminCard" style="display:none">
+        <h2>Add Session</h2>
+        <div id="addSessionForm">
+            <select id="sessionType">
+                <option value="Tutoring">Tutoring</option>
+                <option value="Group Study">Group Study</option>
+            </select>
+            <input type="text" id="sessionTopic" placeholder="Topic (e.g. JavaScript)" />
+            <input type="text" id="sessionTime" placeholder="Time (e.g. 3:00 PM)" />
+            <button type="button" onclick="addSession()">Add Session</button>
+        </div>
+        <p id="sessionMsg" style="color:#2e7d32; min-height:1.2em"></p>
+    </section>
     <section class="card">
       <!-- Tutoring table -->
-      <div class="tableBlock">
+<div class="tableBlock">
         <div class="tableHeader">
           <div class="th">Tutoring</div>
           <div class="th">Topic</div>
           <div class="th"></div>
         </div>
+        <div id="tutoringBody"></div>
+      </div>
         <div class="row">
           <div class="cell left"><span class="personIcon">👤</span><span class="time">10:00 AM</span></div>
           <div class="cell right">JavaScript</div>
@@ -89,12 +103,14 @@
       </div>
 
       <!-- Group Study table -->
-      <div class="tableBlock">
+       <div class="tableBlock">
         <div class="tableHeader">
           <div class="th">Group Study</div>
           <div class="th">Topic</div>
           <div class="th"></div>
         </div>
+        <div id="groupBody"></div>
+      </div>
         <div class="row">
           <div class="cell left"><span class="personIcon">👥</span><span class="time">10:00 AM</span></div>
           <div class="cell right">HTML</div>
@@ -114,11 +130,18 @@
       <ul id="mySessionsList"></ul>
       <p id="noSessionsMsg" style="color:#999">No sessions signed up yet.</p>
     </section>
+
+    <!-- My Sessions card -->
+    <section class="card" id="mySessionsCard" style="display:none">
+        <h2>My Sessions</h2>
+        <ul id="mySessionsList"></ul>
+        <p id="noSessionsMsg" style="color:#999">No sessions signed up yet.</p>
+    </section>
   </main>
 
    <footer>
         <div id="logo">
-            <img src="./images/android-chrome-192x192.png" alt="Clockwork logo" width="50">
+            <img src="./images/favicon_io (18)/clock-circle-svgrepo-com (1)-white.png" alt="Clockwork logo" width="50">
         </div>
         <div id="article">
             <p>Western Maricopa Education Center</p>

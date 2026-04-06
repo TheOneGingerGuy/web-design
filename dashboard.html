@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clockwork – Dashboard</title>
     <link rel="stylesheet" href="./dashboard.css">
-     <link rel="shortcut icon" href="./images/favicon-32x32.png" type="image/x-icon">
+     <link rel="shortcut icon" href="./images/favicon_io (18)/favicon-32x32.png" type="image/x-icon">
 </head>
 <body>
 <!-- Header starts -->
 <header>
     <div class="content">
         <h3>Clockwork</h3>
-        <img src="./images/android-chrome-192x192.png" alt="" class="img" width="50" height="50">
+        <img src="./images/favicon_io (18)/clock-circle-svgrepo-com (1)-white.png" alt="Clockwork logo" class="img" width="50" height="50">
     </div>
 
     <nav>
@@ -72,14 +72,15 @@
         <p class="guest-hint"><a href="login.html">Log in</a> to add your own</p>
     </div>
 
-    <div class="card" id="myCard" style="display:none">
-        <h2>Courses</h2>
-        <ul id="savedItems"></ul>
-        <div id="addItemForm">
-            <input type="text" id="newItemInput" placeholder="Add a Course..." />
-            <button type="button" onclick="addItem()">Add</button>
-        </div>
+<div class="card" id="myCard" style="display:none">
+    <h2>My Courses</h2>
+    <ul id="savedItems"></ul>
+    <div id="addItemForm">
+        <input type="text" id="newTeacherInput" placeholder="Teacher name..." />
+        <input type="text" id="newClassInput" placeholder="Class name..." />
+        <button type="button" onclick="addItem()">Add</button>
     </div>
+</div>
 
     <div class="card" id="upcomingCard" style="display:none">
         <h2>Upcoming</h2>
@@ -90,7 +91,7 @@
 <!-- Footer -->
 <footer>
     <div id="logo">
-        <img src="./images/android-chrome-192x192.png" alt="Clockwork logo" width="50">
+        <img src="./images/favicon_io (18)/clock-circle-svgrepo-com (1)-white.png" alt="Clockwork logo" width="50">
     </div>
     <div id="article">
         <p>Western Maricopa Education Center</p>

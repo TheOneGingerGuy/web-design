@@ -434,6 +434,43 @@ footer {
     border-radius: 10px 10px 0 0;
     gap: 1.5rem;
 }
+#addSessionForm {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+#addSessionForm input,
+#addSessionForm select {
+    padding: 0.4rem 0.75rem;
+    border: 1px solid #c7e0f7;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    background: #f7fbff;
+    color: #0b1b2a;
+    outline: none;
+}
+
+#addSessionForm input:focus,
+#addSessionForm select:focus {
+    border: 1.5px solid #4a90e2;
+}
+
+#addSessionForm button {
+    background: rgb(0,0,53);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#addSessionForm button:hover {
+    background: #00509e;
+}
 
 #logo {
     display: flex;

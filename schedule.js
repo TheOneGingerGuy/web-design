@@ -13,6 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     if (!session || JSON.parse(session).role === "guest") {
         if (nameEl) nameEl.textContent = "Log In";
+        renderSchedule();
         return;
     }
 
@@ -21,12 +22,88 @@ window.addEventListener("DOMContentLoaded", () => {
     if (stored) {
         const data = JSON.parse(stored);
         if (nameEl) nameEl.textContent = data.name;
+
+        if (data.role === "admin") {
+            document.getElementById("adminCard").style.display = "block";
+        } else {
+            document.getElementById("mySessionsCard").style.display = "block";
+            loadMySessions(s.key);
+        }
     }
 
-    // Show my sessions card for logged in users
-    document.getElementById("mySessionsCard").style.display = "block";
-    loadMySessions(s.key);
+    renderSchedule();
 });
+
+// Render schedule rows from localStorage (admin-added) + defaults
+function renderSchedule() {
+    const defaultSessions = [
+        { type: "Tutoring", topic: "JavaScript", time: "10:00 AM" },
+        { type: "Tutoring", topic: "Python", time: "11:00 AM" },
+        { type: "Tutoring", topic: "HTML", time: "1:00 PM" },
+        { type: "Tutoring", topic: "CSS", time: "2:00 PM" },
+        { type: "Group Study", topic: "HTML", time: "10:00 AM" },
+        { type: "Group Study", topic: "Python", time: "11:00 AM" },
+    ];
+
+    const adminSessions = JSON.parse(localStorage.getItem("adminSessions") || "[]");
+    const allSessions = [...defaultSessions, ...adminSessions];
+
+    const tutoringBody = document.getElementById("tutoringBody");
+    const groupBody = document.getElementById("groupBody");
+    tutoringBody.innerHTML = "";
+    groupBody.innerHTML = "";
+
+    const session = localStorage.getItem("session");
+    const isGuest = !session || JSON.parse(session).role === "guest";
+    const userKey = isGuest ? null : JSON.parse(session).key;
+    const userSessions = userKey ? JSON.parse(localStorage.getItem("scheduleEvents_" + userKey) || "[]") : [];
+
+    allSessions.forEach((s) => {
+        const signed = userSessions.find(e => e.type === s.type && e.topic === s.topic && e.time === s.time);
+        const icon = s.type === "Tutoring" ? "👤" : "👥";
+        const btnHtml = isGuest
+            ? `<button class="signup-btn" onclick="signUp('${s.type}','${s.topic}','${s.time}')">Sign Up</button>`
+            : signed
+                ? `<button class="signup-btn signed" disabled>Signed Up</button>`
+                : `<button class="signup-btn" onclick="signUp('${s.type}','${s.topic}','${s.time}')">Sign Up</button>`;
+
+        const row = `
+            <div class="row">
+                <div class="cell left"><span class="personIcon">${icon}</span><span class="time">${s.time}</span></div>
+                <div class="cell right">${s.topic}</div>
+                <div class="cell right">${btnHtml}</div>
+            </div>`;
+
+        if (s.type === "Tutoring") {
+            tutoringBody.innerHTML += row;
+        } else {
+            groupBody.innerHTML += row;
+        }
+    });
+}
+
+function addSession() {
+    const type = document.getElementById("sessionType").value;
+    const topic = document.getElementById("sessionTopic").value.trim();
+    const time = document.getElementById("sessionTime").value.trim();
+
+    if (!topic || !time) {
+        document.getElementById("sessionMsg").style.color = "#d32f2f";
+        document.getElementById("sessionMsg").textContent = "Please fill in all fields.";
+        return;
+    }
+
+    const adminSessions = JSON.parse(localStorage.getItem("adminSessions") || "[]");
+    adminSessions.push({ type, topic, time });
+    localStorage.setItem("adminSessions", JSON.stringify(adminSessions));
+
+    document.getElementById("sessionTopic").value = "";
+    document.getElementById("sessionTime").value = "";
+    document.getElementById("sessionMsg").style.color = "#2e7d32";
+    document.getElementById("sessionMsg").textContent = "Session added!";
+
+    renderSchedule();
+}
 
 function signUp(type, topic, time) {
     const session = localStorage.getItem("session");
@@ -45,35 +122,15 @@ function signUp(type, topic, time) {
     sessions.push({ type, topic, time });
     localStorage.setItem("scheduleEvents_" + userKey, JSON.stringify(sessions));
     loadMySessions(userKey);
-    updateButtons(sessions);
-}
-
-function updateButtons(sessions) {
-    document.querySelectorAll(".signup-btn").forEach(btn => {
-        const onclick = btn.getAttribute("onclick");
-        const match = onclick.match(/signUp\('(.+?)',\s*'(.+?)',\s*'(.+?)'\)/);
-        if (!match) return;
-        const [, type, topic, time] = match;
-        const signed = sessions.find(e => e.type === type && e.topic === topic && e.time === time);
-        if (signed) {
-            btn.textContent = "Signed Up";
-            btn.classList.add("signed");
-            btn.disabled = true;
-        } else {
-            btn.textContent = "Sign Up";
-            btn.classList.remove("signed");
-            btn.disabled = false;
-        }
-    });
+    renderSchedule();
 }
 
 function loadMySessions(userKey) {
     const sessions = JSON.parse(localStorage.getItem("scheduleEvents_" + userKey) || "[]");
     const list = document.getElementById("mySessionsList");
     const noMsg = document.getElementById("noSessionsMsg");
+    if (!list) return;
     list.innerHTML = "";
-
-    updateButtons(sessions);
 
     if (sessions.length === 0) {
         noMsg.style.display = "block";
@@ -96,6 +153,7 @@ function removeSession(index) {
     sessions.splice(index, 1);
     localStorage.setItem("scheduleEvents_" + userKey, JSON.stringify(sessions));
     loadMySessions(userKey);
+    renderSchedule();
 }
 
 function toggleAccountMenu() {
@@ -117,5 +175,5 @@ function logout() {
     const dropdown = document.getElementById("accountDropdown");
     if (nameEl) nameEl.textContent = "Log In";
     if (dropdown) dropdown.style.display = "none";
-    window.location.href = "index.html";
+    window.location.href = "login.html";
 }

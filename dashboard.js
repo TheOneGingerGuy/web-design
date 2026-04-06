@@ -69,17 +69,39 @@ function loadItems(userKey) {
 }
 
 function addItem() {
-    const input = document.getElementById("newItemInput");
-    const text = input.value.trim();
-    if (!text) return;
+    const teacher = document.getElementById("newTeacherInput").value.trim();
+    const className = document.getElementById("newClassInput").value.trim();
+    if (!teacher || !className) return;
+
     const session = JSON.parse(localStorage.getItem("session"));
     const userKey = session.key;
     const items = JSON.parse(localStorage.getItem("notes_" + userKey) || "[]");
-    items.push(text);
+    items.push({ teacher, className });
     localStorage.setItem("notes_" + userKey, JSON.stringify(items));
-    input.value = "";
+
+    document.getElementById("newTeacherInput").value = "";
+    document.getElementById("newClassInput").value = "";
     loadItems(userKey);
 }
+
+function loadItems(userKey) {
+    const items = JSON.parse(localStorage.getItem("notes_" + userKey) || "[]");
+    const list = document.getElementById("savedItems");
+    list.innerHTML = "";
+
+    if (items.length === 0) {
+        list.innerHTML = "<li style='color:#999'>No courses added yet</li>";
+        return;
+    }
+
+    items.forEach((item, i) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<span><strong>${item.className}</strong> — ${item.teacher}</span>
+                        <button class="delete-btn" onclick="deleteItem(${i})">✕</button>`;
+        list.appendChild(li);
+    });
+}
+
 
 function deleteItem(index) {
     const session = JSON.parse(localStorage.getItem("session"));
